@@ -22,9 +22,11 @@ val pageIndicator = listOf(TabLayout::class.java, R.id.view_onboarding_page_indi
 val scrollView = listOf(NestedScrollView::class.java, R.id.scoreView)
 val imageCentered = listOf(AppCompatImageView::class.java, R.id.imageViewCentered)
 val primaryText =
-    listOf(AppTextView::class.java,
+    listOf(
+        AppTextView::class.java,
         R.id.primaryTextView,
-        R.string.onboarding_welcome_title_v2)
+        R.string.onboarding_welcome_title_v2
+    )
 
 val secondaryText = listOf(
     AppTextView::class.java,
