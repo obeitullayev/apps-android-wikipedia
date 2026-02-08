@@ -1,4 +1,4 @@
-package org.wikipedia.lesson03
+package org.wikipedia.lesson03.homework
 
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.widget.NestedScrollView
