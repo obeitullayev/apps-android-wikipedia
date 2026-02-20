@@ -19,8 +19,7 @@ val continueButton = listOf(
     R.string.onboarding_continue
 )
 val pageIndicator = listOf(TabLayout::class.java, R.id.view_onboarding_page_indicator)
-val scrollView = listOf(NestedScrollView::class.java, R.id.scoreView)
-val imageCentered = listOf(AppCompatImageView::class.java, R.id.imageViewCentered)
+val image= listOf(AppCompatImageView::class.java, R.id.imageViewCentered)
 val primaryText =
     listOf(
         AppTextView::class.java,
