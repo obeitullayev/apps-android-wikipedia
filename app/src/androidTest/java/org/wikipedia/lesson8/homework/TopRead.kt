@@ -11,25 +11,24 @@ import org.wikipedia.R
 
 class TopReadItem(matcher: Matcher<View>) : KRecyclerItem<TopReadItem>(matcher) {
 
-    val image = KImageView (matcher) {
+    val headerMenu = KImageView (matcher) {
         withId(R.id.view_list_card_header_menu)
-        isDisplayed()
     }
 
-    val header = KTextView (matcher) {
+    val headerTitle = KTextView (matcher) {
         withId(R.id.view_card_header_title)
-        isInstanceOf(MaterialTextView::class.java)
     }
 
-    val text = KTextView (matcher) {
+    val moreLink = KTextView (matcher) {
         withId(R.id.footerActionButton)
-        isClickable()
     }
 
     val items = KRecyclerView (
+        parent = matcher,
         builder = {withId( R.id.view_list_card_list)},
         itemTypeBuilder = {
             itemType(::TopReadRecycler)
         }
     )
+
 }

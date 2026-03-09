@@ -12,17 +12,16 @@ import org.wikipedia.R
 class SearchItem(matcher: Matcher<View>) : KRecyclerItem<SearchItem>(matcher) {
 
     val icon = KImageView (matcher) {
-        isInstanceOf(AppCompatImageView::class.java)
-        isDisplayed()
+        withIndex(0){
+            isInstanceOf(AppCompatImageView::class.java)
+        }
     }
 
     val text = KTextView (matcher) {
         withText(R.string.search_hint)
-        isInstanceOf(MaterialTextView::class.java)
     }
 
     val voiceIcon = KImageView (matcher) {
         withId(R.id.voice_search_button)
-        isInstanceOf(AppCompatImageView::class.java)
     }
 }

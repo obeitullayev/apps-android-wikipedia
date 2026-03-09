@@ -13,7 +13,6 @@ class TopReadRecycler(matcher: Matcher<View>) : KRecyclerItem<TopReadRecycler>(m
 
     val number = KTextView (matcher) {
         withId(R.id.numberView)
-        isInstanceOf(MaterialTextView::class.java)
     }
 
     val header = KTextView (matcher) {
@@ -28,13 +27,12 @@ class TopReadRecycler(matcher: Matcher<View>) : KRecyclerItem<TopReadRecycler>(m
         withId(R.id.view_list_card_item_graph)
     }
 
-    val pageviews = KView (matcher) {
+    val pageViews = KView (matcher) {
         withId(R.id.view_list_card_item_pageviews)
     }
 
     val image = KImageView (matcher) {
         withId(R.id.view_list_card_item_image)
-        isDisplayed()
     }
 
     val baseNumber = KTextView (matcher){

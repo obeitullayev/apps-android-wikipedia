@@ -14,16 +14,14 @@ class NewsItem(matcher: Matcher<View>) : KRecyclerItem<NewsItem>(matcher) {
 
     val header = KTextView (matcher) {
         withId(R.id.view_card_header_title)
-        isInstanceOf(MaterialTextView::class.java)
     }
 
     val icon = KImageView (matcher) {
         withId(R.id.view_list_card_header_menu)
-        isInstanceOf(AppCompatImageView::class.java)
-        isDisplayed()
     }
 
     val items = KRecyclerView (
+        parent = matcher,
         builder = {withId( R.id.view_list_card_list)},
         itemTypeBuilder = {
             itemType(::NewsRecycler)

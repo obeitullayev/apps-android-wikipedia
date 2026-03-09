@@ -11,6 +11,5 @@ class DayItem(matcher: Matcher<View>) : KRecyclerItem<DayItem>(matcher) {
 
     val text = KTextView (matcher) {
         withId(R.id.day_header_text)
-        isInstanceOf(MaterialTextView::class.java)
     }
 }

@@ -13,21 +13,17 @@ class CustomizeItem(matcher: Matcher<View>) : KRecyclerItem<CustomizeItem>(match
 
     val image = KImageView (matcher) {
         withId(R.id.view_announcement_header_image)
-        isDisplayed()
     }
 
     val text = KTextView (matcher) {
         withId(R.id.view_announcement_text)
-        isInstanceOf(MaterialTextView::class.java)
     }
 
     val customizeButton = KButton (matcher) {
         withId(R.id.view_announcement_action_positive)
-        isClickable()
     }
 
     val button = KButton (matcher) {
         withId(R.id.view_announcement_action_negative)
-        isClickable()
     }
 }

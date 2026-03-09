@@ -12,11 +12,9 @@ class NewsRecycler(matcher: Matcher<View>) : KRecyclerItem<NewsRecycler>(matcher
 
     val text = KTextView (matcher) {
         withId(R.id.horizontal_scroll_list_item_text)
-        isInstanceOf(MaterialTextView::class.java)
     }
 
     val image = KImageView (matcher) {
         withId(R.id.horizontal_scroll_list_item_image)
-        isDisplayed()
     }
 }
