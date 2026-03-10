@@ -14,7 +14,7 @@ import org.wikipedia.lesson09.homework.FeaturedArticle
 import org.wikipedia.lesson8.homework.CustomizeItem
 import org.wikipedia.lesson8.homework.ExploreScreen
 
-class OnboardingScreen : TestCase() {
+class OnboardingScreenTest : TestCase() {
     @get:Rule
     val testRule = ActivityScenarioRule(MainActivity::class.java)
 

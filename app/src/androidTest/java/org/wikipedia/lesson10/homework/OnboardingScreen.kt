@@ -1,5 +1,6 @@
 package org.wikipedia.lesson10.homework
 
+import android.icu.text.LocaleDisplayNames
 import com.kaspersky.components.kautomator.component.common.views.UiView
 import com.kaspersky.components.kautomator.component.text.UiButton
 import com.kaspersky.components.kautomator.screen.UiScreen
@@ -9,6 +10,8 @@ import io.github.kakaocup.kakao.image.KImageView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.uiautomator.UiCollection
+import androidx.test.uiautomator.UiScrollable
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayout
 import com.kaspersky.components.kautomator.component.text.UiTextView
@@ -50,11 +53,13 @@ object OnboardingUiScreen: UiScreen<OnboardingUiScreen>() {
         withId (this@OnboardingUiScreen.packageName, "secondaryTextView")
     }
 
-    val labelOption = UiTextView {
+    val labelOption = UiView {
         withId(this@OnboardingUiScreen.packageName, "option_label")
     }
 
-    //val languageList = listOf(RecyclerView::class.java, R.id.languagesList)
+    val languageList = UiView{
+        withId(this@OnboardingUiScreen.packageName, "languagesList")
+    }
 
     val addLanguageButton = UiButton{
         withId(this@OnboardingUiScreen.packageName,"addLanguageButton")
