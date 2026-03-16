@@ -19,7 +19,7 @@ object CustomizeFeedScreen: KScreen<CustomizeFeedScreen>() {
     val items = KRecyclerView (
         builder = {withId( R.id.content_types_recycler)},
         itemTypeBuilder = {
-            itemType(::FeaturedArticle)
+            itemType(::FeaturedArticleCustomize)
         }
     )
 }

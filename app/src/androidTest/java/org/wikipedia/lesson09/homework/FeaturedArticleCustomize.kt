@@ -8,7 +8,7 @@ import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
 
-class FeaturedArticle(matcher: Matcher<View>) : KRecyclerItem<FeaturedArticle>(matcher) {
+class FeaturedArticleCustomize(matcher: Matcher<View>) : KRecyclerItem<FeaturedArticleCustomize>(matcher) {
 
     val titleText = KTextView (matcher) {
         withId(R.id.feed_content_type_title)

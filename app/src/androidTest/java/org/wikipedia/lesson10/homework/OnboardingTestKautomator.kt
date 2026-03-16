@@ -10,7 +10,7 @@ import org.wikipedia.main.MainActivity
 import com.kaspersky.kaspresso.screens.KScreen
 import org.wikipedia.lesson10.homework.OnboardingUiScreen
 import org.wikipedia.lesson09.homework.CustomizeFeedScreen
-import org.wikipedia.lesson09.homework.FeaturedArticle
+import org.wikipedia.lesson09.homework.FeaturedArticleCustomize
 import org.wikipedia.lesson8.homework.CustomizeItem
 import org.wikipedia.lesson8.homework.ExploreScreen
 

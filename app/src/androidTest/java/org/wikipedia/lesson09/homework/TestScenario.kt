@@ -39,7 +39,7 @@ val testRule = ActivityScenarioRule(MainActivity::class.java)
                     }
                 }
 
-            CustomizeFeedScreen.items.childAt<FeaturedArticle>(1) {
+            CustomizeFeedScreen.items.childAt<FeaturedArticleCustomize>(1) {
                 step("Проверяет что чекбокс отображается") {
                     switcher.isChecked()
                 }
