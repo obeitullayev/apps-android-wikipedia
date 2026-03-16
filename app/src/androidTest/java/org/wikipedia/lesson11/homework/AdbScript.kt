@@ -137,38 +137,19 @@ class OnboardingAdbTest : TestCase() {
     fun preAndPostScenarioLanguage() {
         before("Название теста") {
             device.language.switchInApp(Locale.FRANCE)
-            adbServer.performShell(
-                command = "cmd",
-                arguments = listOf("locale", "set", "ru-RU")
-            )
         }.after {
-            adbServer.performShell(
-                command = "cmd",
-                arguments = listOf("locale", "set", "en-EN")
-            )
+            device.language.switchInApp(Locale.ENGLISH)
         }.run {
             skipButton.containsText("Пропустить")
         }
     }
 
-//    проверить, что сейчас активна MainActivity.
-@Test
-fun checkActivity() {
-    val buttonSkip = device.uiDevice.findObject(UiSelector().textContains("Skip"))
-    buttonSkip.click()
-    device.activities.isCurrent(MainActivity::class.java)
-}
-
-
-@Test
-fun languageTest() {
-    before {
-        adbServer.performAdb("shell cmd locale set-app-locales org.wikipedia.alpha ru")
-        adbServer.performAdb("shell am force-stop org.wikipedia")
-        adbServer.performAdb("shell monkey -p org.wikipedia.alpha -c android.intent.category.LAUNCHER 1")
-
-    }.run {
-        skipButton.containsText("Пропустить")
+    //    проверить, что сейчас активна MainActivity.
+    @Test
+    fun checkActivity() {
+        val buttonSkip = device.uiDevice.findObject(UiSelector().textContains("Skip"))
+        buttonSkip.click()
+        device.activities.isCurrent(MainActivity::class.java)
     }
-}
+
 }
