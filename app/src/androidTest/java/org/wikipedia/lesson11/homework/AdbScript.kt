@@ -1,7 +1,6 @@
 package org.wikipedia.lesson11.homework
 
 import android.view.Surface
-import androidx.browser.R
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.uiautomator.UiScrollable
 import androidx.test.uiautomator.UiSelector
