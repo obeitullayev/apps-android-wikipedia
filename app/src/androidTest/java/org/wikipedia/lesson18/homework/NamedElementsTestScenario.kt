@@ -37,7 +37,7 @@ class SimpleTest : TestCase(Kaspresso.Builder.withForcedAllureSupport(false)) {
             }
 
             ExploreScreenNamed {
-                items.invokeAtIndex<CustomizeItemNamed>(1) {
+                customizeBlockByIndex {
 
                     step("Проверяет что '${customizeButton.getName()}' отображается") {
                         customizeButton.isDisplayed()
@@ -64,9 +64,11 @@ class SimpleTest : TestCase(Kaspresso.Builder.withForcedAllureSupport(false)) {
                 }
             }
 
-            ExploreScreenNamed.items.invokeAtIndex<CustomizeItemNamed>(1) {
-                step("Проверяет что '${customizeButton.getName()}' не отображается") {
-                    customizeButton.doesNotExist()
+            ExploreScreenNamed {
+                customizeBlockByIndex {
+                    step("Проверяет что '${customizeButton.getName()}' не отображается") {
+                        customizeButton.doesNotExist()
+                    }
                 }
             }
         }

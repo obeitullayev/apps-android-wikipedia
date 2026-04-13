@@ -63,6 +63,5 @@ object OnboardingScreenNamed : NamedScreen<OnboardingScreenNamed>() {
     }
 }
 
-
 class LanguageItem(matcher: Matcher<View>) : KRecyclerItem<LanguageItem>(matcher), TextViewAssertions
 

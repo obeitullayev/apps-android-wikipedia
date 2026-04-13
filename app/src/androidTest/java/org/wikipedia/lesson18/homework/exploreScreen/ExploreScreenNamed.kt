@@ -1,11 +1,14 @@
 package org.wikipedia.lesson18.homework.exploreScreen
 
 import io.github.kakaocup.kakao.image.KImageView
+import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KTextView
 import org.wikipedia.R
 import org.wikipedia.feed.view.FeedView
 import org.wikipedia.lesson18.homework.baseElements.NamedScreen
+import org.wikipedia.lesson18.homework.baseElements.getByText
+import org.wikipedia.lesson18.homework.baseElements.invokeAtIndex
 import org.wikipedia.lesson18.homework.baseElements.name
 
 object ExploreScreenNamed: NamedScreen<ExploreScreenNamed>() {
@@ -36,6 +39,18 @@ object ExploreScreenNamed: NamedScreen<ExploreScreenNamed>() {
                 itemType(::FeaturedArticleNamed)
             }
         ).name(withParent("Список статей в Explore"))
+    }
+
+    inline fun <reified T : KRecyclerItem<T>> KRecyclerView.invokeWithText(text: String, fnc: T.() -> Unit) {
+        getByText<T>(text).fnc()
+    }
+
+    fun customizeBlockByIndex( fnc: CustomizeItemNamed.() -> Unit){
+        items.invokeAtIndex<CustomizeItemNamed>(1, fnc)
+    }
+
+    fun customizeBlockByText( fnc: CustomizeItemNamed.() -> Unit){
+        items.invokeWithText("Customize", fnc)
     }
 
 }
