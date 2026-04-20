@@ -9,6 +9,7 @@ import org.wikipedia.feed.view.FeedView
 import org.wikipedia.lesson18.homework.baseElements.NamedScreen
 import org.wikipedia.lesson18.homework.baseElements.getByText
 import org.wikipedia.lesson18.homework.baseElements.invokeAtIndex
+import org.wikipedia.lesson18.homework.baseElements.invokeWithText
 import org.wikipedia.lesson18.homework.baseElements.name
 
 object ExploreScreenNamed: NamedScreen<ExploreScreenNamed>() {
@@ -41,10 +42,6 @@ object ExploreScreenNamed: NamedScreen<ExploreScreenNamed>() {
         ).name(withParent("Список статей в Explore"))
     }
 
-    inline fun <reified T : KRecyclerItem<T>> KRecyclerView.invokeWithText(text: String, fnc: T.() -> Unit) {
-        getByText<T>(text).fnc()
-    }
-
     fun customizeBlockByIndex( fnc: CustomizeItemNamed.() -> Unit){
         items.invokeAtIndex<CustomizeItemNamed>(1, fnc)
     }
@@ -53,5 +50,8 @@ object ExploreScreenNamed: NamedScreen<ExploreScreenNamed>() {
         items.invokeWithText("Customize", fnc)
     }
 
+    fun topReadBlockByIndex(fnc: TopReadItemNamed.() -> Unit) {
+        items.invokeAtIndex<TopReadItemNamed>(3, fnc)
+    }
 }
 

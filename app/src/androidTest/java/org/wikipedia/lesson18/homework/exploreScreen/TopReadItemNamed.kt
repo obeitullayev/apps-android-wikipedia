@@ -8,8 +8,12 @@ import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
+import org.wikipedia.lesson18.homework.baseElements.invokeAtIndex
+import org.wikipedia.lesson18.homework.baseElements.invokeByIndex
 import org.wikipedia.lesson18.homework.baseElements.name
 import org.wikipedia.lesson18.homework.baseElements.withParent
+import org.wikipedia.lesson18.homework.onboardingScreen.OnboardingItem
+import org.wikipedia.lesson18.homework.onboardingScreen.OnboardingScreenNamed.pager
 
 class TopReadItemNamed(matcher: Matcher<View>) : KRecyclerItem<TopReadItemNamed>(matcher) {
 
@@ -36,6 +40,10 @@ class TopReadItemNamed(matcher: Matcher<View>) : KRecyclerItem<TopReadItemNamed>
                 itemType(::TopReadRecyclerNamed)
             }
         ).name(withParent("Список в TopRead"))
+    }
+
+    fun itemPosition(index: Int, fnc: TopReadRecyclerNamed.() -> Unit) {
+        items.invokeAtIndex<TopReadRecyclerNamed>(index, fnc)
     }
 }
 
