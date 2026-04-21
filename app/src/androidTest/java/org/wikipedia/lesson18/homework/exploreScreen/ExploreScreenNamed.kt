@@ -51,7 +51,11 @@ object ExploreScreenNamed: NamedScreen<ExploreScreenNamed>() {
     }
 
     fun topReadBlockByIndex(fnc: TopReadItemNamed.() -> Unit) {
-        items.invokeAtIndex<TopReadItemNamed>(3, fnc)
+        items.invokeAtIndex<TopReadItemNamed>(2, fnc)
+    }
+
+    fun topReadBlockByText(fnc: TopReadItemNamed.() -> Unit) {
+        items.invokeWithText("Top read", fnc)
     }
 }
 

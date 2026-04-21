@@ -21,7 +21,6 @@ object NavBarNamed : NamedScreen<NavBarNamed>() {
 
     val moreButton by lazy {
         KTextView() {
-            withId(R.id.main_nav_tab_layout)
             hasText("more")
         }
     }

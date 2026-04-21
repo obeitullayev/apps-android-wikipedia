@@ -30,5 +30,4 @@ class TopReadItem(matcher: Matcher<View>) : KRecyclerItem<TopReadItem>(matcher) 
             itemType(::TopReadRecycler)
         }
     )
-
 }

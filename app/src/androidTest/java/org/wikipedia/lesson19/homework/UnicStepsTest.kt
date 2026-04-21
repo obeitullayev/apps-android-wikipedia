@@ -12,37 +12,31 @@ import org.wikipedia.lesson18.homework.exploreScreen.TopReadRecyclerNamed
 import org.wikipedia.lesson18.homework.onboardingScreen.OnboardingScreenNamed
 import org.wikipedia.main.MainActivity
 
-class SimpleTest : TestCase(Kaspresso.Builder.withForcedAllureSupport(false)) {
+class SimpleTestNamed : TestCase(Kaspresso.Builder.withForcedAllureSupport(false)) {
     @get:Rule
     val testRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
     fun goToExploreAndTopRead() {
         run {
-            action.click(OnboardingScreenNamed.skipButton)
+            step("Проверяет что '${OnboardingScreenNamed.skipButton}' нажимается"){
+                action.click(OnboardingScreenNamed.skipButton)
+            }
             ExploreScreenNamed {
-                customizeBlockByIndex {
-                    verify.isDisplayed(this)
-                }
-                topReadBlockByIndex {
-                    verify.isDisplayed(this)
-                    itemPosition(2){
-                        verify.isDisplayed(image)
+                step("Проверяет что '${customizeBlockByIndex {}}' отображается") {
+                    customizeBlockByIndex {
+                        verify.isDisplayed(this)
                     }
                 }
-            }
+                step("Проверяет что '${topReadBlockByText {}}' отображается") {
+                    topReadBlockByText {
+                        verify.isDisplayed(this)
+                        itemPosition(2) {
+                            verify.isDisplayed(image)
+                        }
+                    }
+                }
 
-            OnboardingScreenNamed {
-                step("Проверяет что '${skipButton.getName()}' отображается") {
-                    skipButton.isDisplayed()
-                }
-                step("Нажимает на '${skipButton.getName()}'") {
-                    skipButton.click()
-                }
-
-                step("Проверяет что '${primaryText.getName()}' скрыт") {
-                    primaryText.doesNotExist()
-                }
             }
         }
     }
@@ -50,18 +44,36 @@ class SimpleTest : TestCase(Kaspresso.Builder.withForcedAllureSupport(false)) {
     @Test
     fun goToExploreAndToggle() {
         run {
-            action.click(OnboardingScreenNamed.skipButton)
+            step("Проверяет что '${OnboardingScreenNamed.skipButton}' нажимается"){
+                action.click(OnboardingScreenNamed.skipButton)
+            }
             ExploreScreenNamed {
-                customizeBlockByIndex {
-                    verify.isDisplayed(this)
+                step("Проверяет что '${customizeBlockByIndex{}}' отображается"){
+                    customizeBlockByIndex {
+                        verify.isDisplayed(this)
+                    }
                 }
-                topReadBlockByIndex {
-                    verify.isDisplayed(this)
-                    itemPosition(2){
-                        verify.isDisplayed(image)
+                step("открывает '${NavBarNamed}'"){
+                    NavBarNamed{
+                        icon.isDisplayed()
+                        icon.click()
+                        setingsButton.isDisplayed()
+                        setingsButton.click()
+                    }
+                }
+            SettingsScreenNamed{
+                itemSettingsByIndex{
+                    step("проверяет наличие '${title1}'"){
+                        title1.isDisplayed()
+                    }
+                    step(" активирует '${showLinkCheckBox}'") {
+                        showLinkCheckBox.setChecked(false)
+                    }
+                    step(" проверяет '${showLinkCheckBox}'") {
+                        showLinkCheckBox.isNotChecked()
                     }
                 }
             }
         }
     }
-}
+}}

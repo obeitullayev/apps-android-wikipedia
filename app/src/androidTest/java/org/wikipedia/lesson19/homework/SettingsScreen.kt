@@ -13,6 +13,8 @@ import org.wikipedia.lesson18.homework.baseElements.invokeAtIndex
 import org.wikipedia.lesson18.homework.baseElements.invokeWithText
 import org.wikipedia.lesson18.homework.baseElements.name
 import org.wikipedia.lesson18.homework.baseElements.withParent
+import org.wikipedia.lesson18.homework.exploreScreen.CustomizeItemNamed
+import org.wikipedia.lesson18.homework.exploreScreen.ExploreScreenNamed.items
 import org.wikipedia.lesson18.homework.exploreScreen.TopReadRecyclerNamed
 
 object SettingsScreenNamed : NamedScreen<SettingsScreenNamed>() {
@@ -33,14 +35,17 @@ object SettingsScreenNamed : NamedScreen<SettingsScreenNamed>() {
     fun itemSettingsByText(text: String, fnc: SettingsItemNamed.() -> Unit){
         items.invokeWithText(text, fnc)
     }
-}
 
+    fun itemSettingsByIndex( fnc: SettingsItemNamed.() -> Unit){
+        items.invokeAtIndex<SettingsItemNamed>(3, fnc)
+    }
+}
 class SettingsItemNamed(matcher: Matcher<View>) : KRecyclerItem<SettingsItemNamed>(matcher){
 
-    val title by lazy {
+    val title1 by lazy {
         KTextView() {
-            withId(R.id.title)
-        }
+            withText("Show link previews")
+        }.name(withParent("Тайтл"))
     }
 
     val showLinkCheckBox by lazy {
