@@ -19,6 +19,7 @@ class EqualsWithTrimAssertion(private val expected: String) : ViewAssertion {
         }
         val actual = (view as? TextView)?.text
             ?.trim()
+            ?.toString()
         if (actual == null) {
             throw IllegalStateException("It is not text view")
         }

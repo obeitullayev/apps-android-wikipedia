@@ -55,22 +55,22 @@ class SimpleTestNamed : TestCase(Kaspresso.Builder.withForcedAllureSupport(false
                 }
                 step("открывает '${NavBarNamed}'"){
                     NavBarNamed{
-                        icon.isDisplayed()
-                        icon.click()
+                        iconMore.isDisplayed()
+                        iconMore.click()
                         setingsButton.isDisplayed()
                         setingsButton.click()
                     }
                 }
             SettingsScreenNamed{
-                itemSettingsByIndex{
-                    step("проверяет наличие '${title1}'"){
-                        title1.isDisplayed()
+                itemSettingsShowLink{
+                    step("проверяет наличие '${titleShowLink}'"){
+                        titleShowLink.isDisplayed()
                     }
-                    step(" активирует '${showLinkCheckBox}'") {
-                        showLinkCheckBox.setChecked(false)
+                    step(" активирует '${switchCheckBox}'") {
+                        switchCheckBox.setChecked(false)
                     }
-                    step(" проверяет '${showLinkCheckBox}'") {
-                        showLinkCheckBox.isNotChecked()
+                    step(" проверяет '${switchCheckBox}'") {
+                        switchCheckBox.isNotChecked()
                     }
                 }
             }

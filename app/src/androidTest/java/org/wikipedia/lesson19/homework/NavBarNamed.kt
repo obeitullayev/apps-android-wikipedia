@@ -13,9 +13,21 @@ object NavBarNamed : NamedScreen<NavBarNamed>() {
     override val layoutId = null
     override val viewClass = null
 
-    val icon by lazy {
+    val iconMore by lazy {
         KImageView() {
             withId(R.id.nav_tab_more)
+        }
+    }
+
+    val iconExplore by lazy {
+        KImageView() {
+            withId(R.id.nav_tab_explore)
+        }
+    }
+
+    val iconSearch by lazy {
+        KImageView() {
+            withId(R.id.nav_tab_search)
         }
     }
 

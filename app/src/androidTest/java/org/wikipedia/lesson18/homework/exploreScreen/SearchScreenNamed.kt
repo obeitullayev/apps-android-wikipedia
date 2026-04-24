@@ -2,8 +2,11 @@ package org.wikipedia.lesson18.homework.exploreScreen
 
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.SearchView
+import io.github.kakaocup.kakao.edit.KEditText
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
+import io.github.kakaocup.kakao.searchview.KSearchView
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
@@ -18,6 +21,21 @@ class SearchItemNamed(matcher: Matcher<View>) : KRecyclerItem<SearchItemNamed>(m
                 isInstanceOf(AppCompatImageView::class.java)
             }
         }.name(withParent("Иконка поиска"))
+    }
+
+    val searchField by lazy {
+        KImageView(matcher) {
+            withId( R.id.search_card)
+        }.name(withParent("  поиск"))
+    }
+
+    val searchInput by lazy {
+        KEditText(matcher){
+            withParent {
+                    R.id.search_container
+                    }
+            isInstanceOf(SearchView.SearchAutoComplete::class.java)
+        }
     }
 
     val text by lazy {

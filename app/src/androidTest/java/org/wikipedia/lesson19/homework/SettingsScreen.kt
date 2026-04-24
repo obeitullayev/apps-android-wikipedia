@@ -36,19 +36,26 @@ object SettingsScreenNamed : NamedScreen<SettingsScreenNamed>() {
         items.invokeWithText(text, fnc)
     }
 
-    fun itemSettingsByIndex( fnc: SettingsItemNamed.() -> Unit){
+    fun itemSettingsShowLink( fnc: SettingsItemNamed.() -> Unit){
         items.invokeAtIndex<SettingsItemNamed>(3, fnc)
     }
+
 }
 class SettingsItemNamed(matcher: Matcher<View>) : KRecyclerItem<SettingsItemNamed>(matcher){
 
-    val title1 by lazy {
+    val titleShowLink by lazy {
         KTextView() {
             withText("Show link previews")
         }.name(withParent("Тайтл"))
     }
 
-    val showLinkCheckBox by lazy {
+    val titleWiFI by lazy {
+        KTextView() {
+            withText("Download only over Wi-Fi")
+        }.name(withParent("Тайтл"))
+    }
+
+    val switchCheckBox by lazy {
         KCheckBox(matcher) {
             withId(R.id.switchWidget)
         }.name(withParent("Чекбокс"))
