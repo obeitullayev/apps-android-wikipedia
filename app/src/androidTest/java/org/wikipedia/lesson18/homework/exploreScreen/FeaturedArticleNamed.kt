@@ -11,14 +11,16 @@ import org.wikipedia.lesson18.homework.baseElements.withParent
 
 class FeaturedArticleNamed(matcher: Matcher<View>) : KRecyclerItem<FeaturedArticleNamed>(matcher)  {
 
-        val titleText by lazy {
-            KTextView {
-                withId(R.id.articleTitle)
-            }.name(withParent("Текст"))
+    val titleText by lazy {
+        KTextView {
+            withId(R.id.articleTitle)
+        }.name(withParent("Текст"))
+    }
+
+
+    val webView by lazy {
+        KWebView {
+            withId(R.id.page_web_view)
         }
-        val webView by lazy {
-            KWebView {
-                withId(R.id.page_web_view)
-            }
-        }
+    }
 }

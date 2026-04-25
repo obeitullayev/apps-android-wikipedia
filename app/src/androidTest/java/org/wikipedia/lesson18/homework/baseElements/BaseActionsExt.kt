@@ -74,7 +74,8 @@ class NameHierarchy(private val name: String, private val parent: NameHierarchy?
 }
 
 abstract class NamedScreen <T : NamedScreen<T>> : KScreen<T>() {
-
+    override val layoutId: Int? = null
+    override val viewClass: Class<*>?= null
     abstract val screenName: String
 
     private val nameHierarchy by lazy {

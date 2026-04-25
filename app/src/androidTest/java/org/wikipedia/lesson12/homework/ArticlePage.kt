@@ -7,6 +7,9 @@ import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
 import io.github.kakaocup.kakao.web.KWebView
 import org.wikipedia.R
+import org.wikipedia.lesson18.homework.baseElements.name
+import org.wikipedia.lesson18.homework.baseElements.withParent
+import org.wikipedia.lesson18.homework.exploreScreen.ExploreScreenNamed.withParent
 
 object ArticlePage : KScreen<ArticlePage>() {
     override val layoutId: Int?= null
@@ -58,6 +61,12 @@ object ArticlePage : KScreen<ArticlePage>() {
 
     val containerBottomSheet = KView{
         withId(R.id.container)
+    }
+
+    val navThemeAction by lazy {
+        KTextView {
+            withId(R.id.page_theme)
+        }.name(withParent("Тема статьи"))
     }
 
 }

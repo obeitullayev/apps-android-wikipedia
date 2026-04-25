@@ -18,11 +18,10 @@ import org.wikipedia.lesson18.homework.exploreScreen.SearchItemNamed
 import org.wikipedia.lesson18.homework.onboardingScreen.OnboardingScreenNamed
 import org.wikipedia.lesson20.equalsWithTrim
 import org.wikipedia.lesson20.multiAction
+import org.wikipedia.lesson22.homework.BaseTest
 import org.wikipedia.main.MainActivity
 
-class CustomActionsAssertionsTest : TestCase(Kaspresso.Builder.withForcedAllureSupport(false)) {
-    @get:Rule
-    val testRule = ActivityScenarioRule(MainActivity::class.java)
+class CustomActionsAssertionsTest : BaseTest() {
 
     @Test
     fun customActionScenario() {

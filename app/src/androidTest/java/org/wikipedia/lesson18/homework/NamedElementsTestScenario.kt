@@ -14,11 +14,10 @@ import org.wikipedia.lesson18.homework.baseElements.invokeAtIndex
 import org.wikipedia.lesson18.homework.exploreScreen.CustomizeItemNamed
 import org.wikipedia.lesson18.homework.exploreScreen.ExploreScreenNamed
 import org.wikipedia.lesson18.homework.onboardingScreen.OnboardingScreenNamed
+import org.wikipedia.lesson22.homework.BaseTest
 import org.wikipedia.main.MainActivity
 
-class SimpleTest : TestCase(Kaspresso.Builder.withForcedAllureSupport(false)) {
-    @get:Rule
-    val testRule = ActivityScenarioRule(MainActivity::class.java)
+class SimpleTest : BaseTest() {
 
     @Test
     fun testWithNamedElements() {

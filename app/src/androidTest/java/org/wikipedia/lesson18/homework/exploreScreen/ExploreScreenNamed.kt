@@ -6,6 +6,7 @@ import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KTextView
 import org.wikipedia.R
 import org.wikipedia.feed.view.FeedView
+import org.wikipedia.lesson11.homework.FeaturedArticle
 import org.wikipedia.lesson18.homework.baseElements.NamedScreen
 import org.wikipedia.lesson18.homework.baseElements.getByText
 import org.wikipedia.lesson18.homework.baseElements.invokeAtIndex
@@ -15,19 +16,15 @@ import org.wikipedia.lesson18.homework.baseElements.name
 object ExploreScreenNamed: NamedScreen<ExploreScreenNamed>() {
 
     override val screenName = "Экран Explore"
-    override val layoutId = R.layout.fragment_feed
-    override val viewClass = FeedView::class.java
+    override val layoutId= R.layout.fragment_feed
+    override val viewClass= FeedView::class.java
 
     val logo by lazy {
         KImageView {
             withId(R.id.main_toolbar_wordmark)
         }.name(withParent("Логотип в тулбаре"))
     }
-    val title by lazy {
-        KTextView {
-            withId(R.id.articleTitle)
-        }.name(withParent("Тайтл в статье"))
-    }
+
     val items by lazy {
         KRecyclerView(
             builder = { withId(R.id.feed_view) },
@@ -56,6 +53,10 @@ object ExploreScreenNamed: NamedScreen<ExploreScreenNamed>() {
 
     fun topReadBlockByText(fnc: TopReadItemNamed.() -> Unit) {
         items.invokeWithText("Top read", fnc)
+    }
+
+    fun featureArticleByText(fnc: FeaturedArticleNamed.() -> Unit) {
+        items.invokeWithText("Featured article", fnc)
     }
 
     fun searchBlockByText(fnc: SearchItemNamed.() -> Unit) {

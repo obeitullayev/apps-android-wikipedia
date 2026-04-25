@@ -1,21 +1,12 @@
 package org.wikipedia.lesson19.homework
 
+import android.widget.Checkable
+import io.github.kakaocup.kakao.check.CheckableAssertions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.wikipedia.lesson18.homework.baseElements.getName
 
-// Шаги действий
-class Actions(private val steps: StepDefinitions) : StepsDsl<Actions>() {
-
-    override val self = this
-
-    fun click(element: BaseActions) {
-        steps.click("Нажимает на '${element.getName()}'", element)
-    }
-}
-
-// Шаги проверок
 class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
 
     override val self = this
@@ -43,6 +34,18 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
             text,
             true
         )
+    }
+
+    fun isChecked(element: CheckableAssertions) {
+        steps.isChecked(
+            "Проверяет, что элемент '${(element as BaseActions).getName()}' активен",
+            element)
+    }
+
+    fun isNotChecked(element: CheckableAssertions) {
+        steps.isNotChecked(
+            "Проверяет, что элемент '${(element as BaseActions).getName()}' не активен",
+            element)
     }
 
     fun doesNotExist(element: BaseAssertions) {
