@@ -6,6 +6,7 @@ import io.github.kakaocup.kakao.check.CheckableAssertions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
+import org.wikipedia.lesson23.homework.KWebViewElement
 
 class StepDefinitions(private val testContext: TestContext<*>) {
 
@@ -15,9 +16,21 @@ class StepDefinitions(private val testContext: TestContext<*>) {
         }
     }
 
+    fun click(step: String, element: KWebViewElement) {
+        execute(step) {
+            element.performWebViewAction { click() }
+        }
+    }
+
     fun isDisplayed(step: String, element: BaseAssertions) {
         execute(step) {
             element.isDisplayed()
+        }
+    }
+
+    fun isDisplayed(step: String, element: KWebViewElement) {
+        execute(step) {
+            element.performWebViewAction { scroll() }
         }
     }
 
@@ -27,6 +40,16 @@ class StepDefinitions(private val testContext: TestContext<*>) {
                 element.containsText(text)
             } else {
                 element.hasText(text)
+            }
+        }
+    }
+
+    fun hasText(step: String, element: KWebViewElement, text: String, isSubstring: Boolean) {
+        execute(step) {
+            if (isSubstring) {
+                element.performWebViewAction { containsText(text) }
+            } else {
+                element.performWebViewAction { hasText(text) }
             }
         }
     }

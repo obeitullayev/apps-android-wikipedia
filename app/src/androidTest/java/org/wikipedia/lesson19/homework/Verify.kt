@@ -6,6 +6,7 @@ import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.wikipedia.lesson18.homework.baseElements.getName
+import org.wikipedia.lesson23.homework.KWebViewElement
 
 class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
 
@@ -18,9 +19,26 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
         )
     }
 
+    fun isDisplayed(element: KWebViewElement) {
+        steps.isDisplayed(
+            "Проверяет, что отображается '${element.getName()}'",
+            element
+        )
+    }
+
+
     fun hasText(element: TextViewAssertions, text: String) {
         steps.hasText(
             "Проверяет что текст в элементе '${(element as BaseActions).getName()}' эквивалентен '$text'",
+            element,
+            text,
+            false
+        )
+    }
+
+    fun hasText(element: KWebViewElement, text: String) {
+        steps.hasText(
+            "Проверяет что текст в элементе '${element.getName()}' эквивалентен '$text'",
             element,
             text,
             false
@@ -36,6 +54,15 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
         )
     }
 
+    fun containsText(element: KWebViewElement, text: String) {
+        steps.hasText(
+            "Проверяет что текст в элементе '${element.getName()}' содержит подстроку '$text'",
+            element,
+            text,
+            true
+        )
+    }
+    
     fun isChecked(element: CheckableAssertions) {
         steps.isChecked(
             "Проверяет, что элемент '${(element as BaseActions).getName()}' активен",

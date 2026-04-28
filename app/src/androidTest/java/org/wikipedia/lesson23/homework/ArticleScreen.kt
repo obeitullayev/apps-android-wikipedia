@@ -14,7 +14,29 @@ object ArticleScreen: NamedScreen<ArticleScreen>() {
     }
 
 //    val title by lazy {
-//        webView.withXPath("//h1").name(withParent("Заголовок"))
+//        KWebViewElement(
+//            webView,
+//            "//h1")
+//            .name(withParent("Заголовок"))
 //    }
 
+
+    val title by lazy {
+        webView.withXPath("//h1")
+            .name(withParent("Заголовок"))
+    }
+
+    val references by lazy {
+        webView.withXPath("//*[@id=\"References\"]")
+            .name(withParent("Блок References"))
+    }
+
+    val referencesList by lazy {
+        KWebViewList(webView, "(//ol)[2]")
+            .name(withParent("Список"))
+    }
+
+    fun referencesItem(index: Int, fnc: ReferencesItem.() -> Unit){
+        referencesList.childAt(index, fnc)
+    }
 }
