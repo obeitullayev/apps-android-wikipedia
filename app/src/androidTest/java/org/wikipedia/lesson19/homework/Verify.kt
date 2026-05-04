@@ -1,12 +1,15 @@
 package org.wikipedia.lesson19.homework
 
 import android.widget.Checkable
+import io.github.kakaocup.compose.node.action.NodeActions
+import io.github.kakaocup.compose.node.assertion.NodeAssertions
 import io.github.kakaocup.kakao.check.CheckableAssertions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.wikipedia.lesson18.homework.baseElements.getName
 import org.wikipedia.lesson23.homework.KWebViewElement
+import org.wikipedia.lesson24.homework.getName
 
 class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
 
@@ -42,6 +45,14 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
             element,
             text,
             false
+        )
+    }
+
+    fun hasText(element: NodeAssertions, text: String) {
+        steps.hasText(
+            "Проверяет что текст в элементе '${(element as NodeActions).getName()}' эквивалентен '$text'",
+            element,
+            text
         )
     }
 

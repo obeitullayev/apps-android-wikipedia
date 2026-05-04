@@ -18,6 +18,7 @@ class OnboardingItem(matcher: Matcher<View>) : KViewPagerItem<OnboardingItem>(ma
             withId(R.id.imageViewCentered)
         }.name(withParent("Картинка"))
     }
+
     val title by lazy {
         KTextView(matcher) {
             withId(R.id.primaryTextView)
@@ -30,15 +31,5 @@ class OnboardingItem(matcher: Matcher<View>) : KViewPagerItem<OnboardingItem>(ma
         }.name(withParent("Кнопка добавления языка"))
     }
 
-    val languages by lazy {
-        KRecyclerView(
-            parent = matcher,
-            builder = {
-                withId(R.id.languagesList)
-            },
-            itemTypeBuilder = {
-                itemType(::LanguageItem)
-            }
-        ).name(withParent("Список языков"))
-    }
+
 }

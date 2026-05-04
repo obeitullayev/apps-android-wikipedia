@@ -41,13 +41,13 @@ class TestWebViewDsl: BaseTest(){
                 step("нажимает ${closePopupButton.getName()}") {
                     action.click(references)
                 }
-                referencesList{
+//                referencesList{
                     referencesItem(2){
                         step("проверяет текст в ${index.getName()}") {
                             verify.containsText(index,"2")
                         }
                     }
-                }
+//                }
             }
         }
     }

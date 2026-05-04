@@ -2,11 +2,15 @@ package org.wikipedia.lesson19.homework
 
 import android.widget.Checkable
 import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
+import io.github.kakaocup.compose.node.action.NodeActions
+import io.github.kakaocup.compose.node.assertion.NodeAssertions
 import io.github.kakaocup.kakao.check.CheckableAssertions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.wikipedia.lesson23.homework.KWebViewElement
+import org.wikipedia.lesson24.homework.assertTrimmedTextIsEquals
+import org.wikipedia.lesson24.homework.clickIfEnabled
 
 class StepDefinitions(private val testContext: TestContext<*>) {
 
@@ -19,6 +23,12 @@ class StepDefinitions(private val testContext: TestContext<*>) {
     fun click(step: String, element: KWebViewElement) {
         execute(step) {
             element.performWebViewAction { click() }
+        }
+    }
+
+    fun click(step: String, element: NodeActions) {
+        execute(step) {
+            element.clickIfEnabled()
         }
     }
 
@@ -51,6 +61,12 @@ class StepDefinitions(private val testContext: TestContext<*>) {
             } else {
                 element.performWebViewAction { hasText(text) }
             }
+        }
+    }
+
+    fun hasText(step: String, element: NodeAssertions, text: String) {
+        execute(step) {
+                element.assertTrimmedTextIsEquals ( text )
         }
     }
 
