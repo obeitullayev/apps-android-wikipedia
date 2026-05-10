@@ -1,5 +1,7 @@
 package org.wikipedia.lesson23.homework
 
+import io.github.kakaocup.kakao.image.KImageView
+import io.github.kakaocup.kakao.text.KButton
 import org.wikipedia.R
 import io.github.kakaocup.kakao.web.KWebView
 import org.wikipedia.lesson18.homework.baseElements.NamedScreen
@@ -13,6 +15,13 @@ object ArticleScreen: NamedScreen<ArticleScreen>() {
         }
     }
 
+    val button by lazy {
+        KButton{
+//            withId(R.id.buttonView)
+            withText(R.string.onboarding_got_it)
+        }
+    }
+
 //    val title by lazy {
 //        KWebViewElement(
 //            webView,
@@ -20,10 +29,13 @@ object ArticleScreen: NamedScreen<ArticleScreen>() {
 //            .name(withParent("Заголовок"))
 //    }
 
-
     val title by lazy {
         webView.withXPath("//h1")
             .name(withParent("Заголовок"))
+    }
+
+    val image by lazy {
+        KImageView {withId(R.id.view_page_header_image)}
     }
 
     val references by lazy {

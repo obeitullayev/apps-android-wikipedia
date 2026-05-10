@@ -78,16 +78,16 @@ object OnboardingScreenNamed : NamedScreen<OnboardingScreenNamed>() {
         ).name(withParent("Слайдер"))
     }
 
-//    val items by lazy {
-//        KRecyclerView(
-//            builder = {
-//                withId(id.languagesList)
-//            },
-//            itemTypeBuilder = {
-//                itemType(::ItemLanguage)
-//            }
-//        ).name(withParent("Список языков"))
-//    }
+    val items by lazy {
+        KRecyclerView(
+            builder = {
+                withId(id.languagesList)
+            },
+            itemTypeBuilder = {
+                itemType(::ItemLanguage)
+            }
+        ).name(withParent("Список языков"))
+    }
 
     // В OnboardinScreen можем добавить обёртку для доступа к слайдам
     fun page(index: Int, fnc: OnboardingItem.() -> Unit) {
@@ -103,15 +103,6 @@ object OnboardingScreenNamed : NamedScreen<OnboardingScreenNamed>() {
 //    }
 }
 
-//class ItemLanguage(matcher: Matcher<View>) : KRecyclerItem<ItemLanguage>(matcher){
-//
-//    val title by lazy {
-//        KTextView(matcher) {
-//            withClassName("org.wikipedia.alpha.ui.view.AppTextView")
-////            withId(R.id.option_label)
-////            containsText("Deutsch")
-//        }.name(withParent("элемент списка"))
-//    }
-//
-//}
+class ItemLanguage(matcher: Matcher<View>) : KRecyclerItem<ItemLanguage>(matcher){
+}
 

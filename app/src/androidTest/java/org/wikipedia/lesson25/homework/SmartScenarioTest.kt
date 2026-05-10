@@ -1,21 +1,24 @@
-package org.wikipedia.lesson23.homework
+package org.wikipedia.lesson25.homework
 
-import androidx.compose.animation.veilOut
+import androidx.test.uiautomator.UiSelector
 import org.junit.Test
 import org.wikipedia.lesson12.homework.ArticlePage.closePopupButton
 import org.wikipedia.lesson18.homework.baseElements.getName
 import org.wikipedia.lesson18.homework.exploreScreen.ExploreScreenNamed
-import org.wikipedia.lesson18.homework.exploreScreen.FeaturedArticleNamed
+import org.wikipedia.lesson18.homework.exploreScreen.ExploreScreenNamed.invoke
+import org.wikipedia.lesson18.homework.exploreScreen.ExploreScreenNamed.topReadBlockByText
 import org.wikipedia.lesson18.homework.onboardingScreen.OnboardingScreenNamed
 import org.wikipedia.lesson19.homework.action
 import org.wikipedia.lesson19.homework.verify
 import org.wikipedia.lesson22.homework.BaseTest
+import org.wikipedia.lesson23.homework.ArticleScreen
 
-class TestWebViewDsl: BaseTest(){
+class SmartScenarioTest: BaseTest(){
 
     @Test
-    fun checkReferenceIndexAndArticleTitle() {
+    fun closeBannerTest(){
         run{
+
             step("нажимает ${OnboardingScreenNamed.skipButton.getName()} ") {
                 action.click(OnboardingScreenNamed.skipButton)
             }
@@ -31,23 +34,18 @@ class TestWebViewDsl: BaseTest(){
                     }
                 }
             }
+            step("закрывает баннеры через SmartScenario") {
+                smartScenarios.closePlayTodayGame()
+                Thread.sleep(3000)
+                smartScenarios.closeGotIt()
+            }
             ArticleScreen{
-//                step("нажимает ${closePopupButton.getName()}") {
-//                    closePopupButton.click()
-//                }
                 step("проверяет ${title.getName()}") {
                     verify.isDisplayed(ArticleScreen.title)
                 }
-                step("нажимает ${closePopupButton.getName()}") {
-                    action.click(references)
+                step("ждет 3000 млс. ") {
+                    Thread.sleep(3000)
                 }
-//                referencesList{
-                    referencesItem(2){
-                        step("проверяет текст в ${index.getName()}") {
-                            verify.containsText(index,"2")
-                        }
-                    }
-//                }
             }
         }
     }
