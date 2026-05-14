@@ -16,9 +16,9 @@ abstract class ScreenBehaviorBase(protected val testContext: BaseTestContext) {
     abstract fun isConditionMet(): Boolean
 
     fun initBehavior(): Boolean {        val isConditionMet = isConditionMet()
-//        if (isConditionMet) {
+        if (isConditionMet) {
             executeStep(action)
-//        }
+        }
         return isConditionMet
     }
 
@@ -35,7 +35,7 @@ abstract class ScreenBehaviorBase(protected val testContext: BaseTestContext) {
         return testContext.device
             .uiDevice
             .findObject(
-                UiSelector().resourceIdMatches(
+                UiSelector().resourceId(
                     "$appPackage:id/$id"
                 )
             )

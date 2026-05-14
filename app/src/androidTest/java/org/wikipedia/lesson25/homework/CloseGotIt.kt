@@ -1,5 +1,6 @@
 package org.wikipedia.lesson25.homework
 
+import android.util.Log
 import androidx.test.uiautomator.UiObjectNotFoundException
 import com.kaspersky.kaspresso.testcases.core.testcontext.BaseTestContext
 import io.qameta.allure.kotlin.Allure
@@ -34,6 +35,7 @@ class CloseGotIt(testContext: BaseTestContext) : ScreenBehaviorBase(testContext)
         }
     }
     override fun isConditionMet(): Boolean {
+        Log.i("KASPRESSO", checkScreenById("textView").toString())
         return checkScreenById("textView")
     }
 }
