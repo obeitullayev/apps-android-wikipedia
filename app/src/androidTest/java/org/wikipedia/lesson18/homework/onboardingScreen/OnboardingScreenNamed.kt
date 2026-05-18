@@ -6,6 +6,7 @@ import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
+import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.hamcrest.Matcher
 import org.wikipedia.R
 import org.wikipedia.R.*
@@ -94,6 +95,10 @@ object OnboardingScreenNamed : NamedScreen<OnboardingScreenNamed>() {
         pager.invokeByIndex(index, fnc)
     }
 
+    fun lang(str: String, fnc: ItemLanguage.() -> Unit) {
+        items.invokeWithText(str, fnc)
+    }
+
 //    fun languageItem(index: Int, fnc: ItemLanguage.() -> Unit) {
 //        items.invokeAtIndex<ItemLanguage>(index, fnc)
 //    }
@@ -103,6 +108,5 @@ object OnboardingScreenNamed : NamedScreen<OnboardingScreenNamed>() {
 //    }
 }
 
-class ItemLanguage(matcher: Matcher<View>) : KRecyclerItem<ItemLanguage>(matcher){
-}
-
+class ItemLanguage(matcher: Matcher<View>) : KRecyclerItem<ItemLanguage>(matcher),
+    TextViewAssertions

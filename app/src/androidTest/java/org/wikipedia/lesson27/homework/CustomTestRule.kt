@@ -13,34 +13,37 @@ import org.junit.runners.model.Statement
 import org.wikipedia.lesson22.homework.BaseTest
 
 class CustomTestRule : TestRule {
+
     override fun apply(
-        base: Statement?,
-        description: Description?
-    ): Statement? {
+        base: Statement,
+        description: Description
+    ): Statement {
+
         Log.i("KASPRESSO", "Before Test")
-        Log.i("KASPRESSO", description?.displayName?: "Empty display name")
-//        val allureId = description?.getAnnotation<AllureId>(AllureId::class.java)?.value
+        Log.i("KASPRESSO", description.displayName)
+
         return CustomStatement(base, description)
-        }
     }
+}
 
-//object Config{
-//    val testCases = listOf("1","2","3")
-//}
+class CustomStatement(
+    private val base: Statement,
+    private val description: Description
+) : Statement() {
 
-class CustomStatement(val base: Statement?,
-                      val description: Description?
-): Statement() {
     override fun evaluate() {
-        val annotation= description?.getAnnotation(Deprecated::class.java)
-        if ( annotation != null){
+
+        val annotation =
+            description.getAnnotation(Deprecated::class.java)
+
+        if (annotation != null) {
             throw AssumptionViolatedException("Test is deprecated")
         }
+
         try {
-            base?.evaluate()
-        } catch (e: AssumptionViolatedException){
-            Log.i("KASPRESSO", e.message ?: "не имеется Deprecated тест")
+            base.evaluate()
+        } finally {
+            Log.i("KASPRESSO", "After Test")
         }
-        Log.i("KASPRESSO", "After Test")
     }
 }

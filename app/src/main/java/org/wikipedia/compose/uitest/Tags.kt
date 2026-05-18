@@ -7,4 +7,6 @@ object Tags{
     const val LOCALIZED_LANGUAGE_NAME =  "localizedLanguageName"
 
     const val LANGUAGE_LIST_TITLE =  "listHeader"
+
+    const val NO_RESULT_SEARCH = "noResultText"
 }

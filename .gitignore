@@ -44,3 +44,5 @@ device*.png
 
 # Log Files
 *.log
+
+data.properties

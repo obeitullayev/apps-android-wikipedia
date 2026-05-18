@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -32,6 +33,7 @@ import org.wikipedia.R
 import org.wikipedia.analytics.eventplatform.PlacesEvent
 import org.wikipedia.compose.theme.BaseTheme
 import org.wikipedia.compose.theme.WikipediaTheme
+import org.wikipedia.compose.uitest.Tags
 import org.wikipedia.language.LanguageUtil
 import org.wikipedia.theme.Theme
 
@@ -96,7 +98,7 @@ fun NoSearchResults(
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             BasicText(
-                                modifier = Modifier.padding(1.dp),
+                                modifier = Modifier.padding(1.dp).testTag(Tags.NO_RESULT_SEARCH),
                                 text = LanguageUtil.formatLangCodeForButton(langCode.uppercase()),
                                 autoSize = TextAutoSize.StepBased(minFontSize = 1.sp, maxFontSize = 10.sp, stepSize = 1.sp),
                                 style = TextStyle(

@@ -3,7 +3,13 @@ package org.wikipedia.lesson20.homework
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.SearchView
+import androidx.compose.ui.semantics.SemanticsNode
+import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
+import androidx.test.espresso.matcher.ViewMatchers.withText
+import com.kaspersky.components.composesupport.core.KNode
 import com.kaspersky.kaspresso.screens.KScreen
+import io.github.kakaocup.compose.node.element.ComposeScreen
+import io.github.kakaocup.compose.node.element.lazylist.KLazyListItemNode
 import io.github.kakaocup.kakao.edit.KEditText
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerView
@@ -14,6 +20,10 @@ import org.wikipedia.R
 import org.wikipedia.lesson11.homework.FeaturedArticle
 import org.wikipedia.lesson18.homework.baseElements.name
 import org.wikipedia.lesson18.homework.exploreScreen.ExploreScreenNamed.withParent
+import org.wikipedia.lesson24.homework.AddLanguageScreenCompose
+import org.wikipedia.lesson24.homework.AddLanguageScreenCompose.child
+import org.wikipedia.lesson24.homework.ComposeNamedScreen
+import org.wikipedia.lesson24.homework.LanguageItem
 import org.wikipedia.lesson8.homework.CustomizeItem
 import org.wikipedia.lesson8.homework.DayItem
 import org.wikipedia.lesson8.homework.NewsItem
@@ -24,7 +34,6 @@ import org.wikipedia.views.SearchAndFilterActionProvider
 object SearchScreen: KScreen<SearchScreen>() {
     override val layoutId = R.layout.view_search_and_filter
     override val viewClass = SearchAndFilterActionProvider::class.java
-
 
     val icon by lazy {
         KImageView() {
@@ -65,4 +74,12 @@ object SearchScreen: KScreen<SearchScreen>() {
     }
 
 
+}
+
+object SearchComposeScreen: ComposeNamedScreen<AddLanguageScreenCompose>(){
+    override val screenName = "Language Screen"
+
+    val searchEmptyImage = child<KNode> {
+        hasText("No results")
+    }
 }

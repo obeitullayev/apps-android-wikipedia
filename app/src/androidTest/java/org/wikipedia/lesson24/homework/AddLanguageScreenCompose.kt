@@ -41,7 +41,6 @@ class LanguageItem(
     semanticsProvider: SemanticsNodeInteractionsProvider? =null
 ): KLazyListItemNode<LanguageItem>(semanticsNode, semanticsProvider!!){
 
-
     val localName by lazy {
         child<KNode>{
             hasTestTag(LOCALIZED_LANGUAGE_NAME)
