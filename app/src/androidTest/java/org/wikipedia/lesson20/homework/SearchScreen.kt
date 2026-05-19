@@ -76,10 +76,10 @@ object SearchScreen: KScreen<SearchScreen>() {
 
 }
 
-object SearchComposeScreen: ComposeNamedScreen<AddLanguageScreenCompose>(){
-    override val screenName = "Language Screen"
+object SearchComposeScreen: ComposeNamedScreen<SearchComposeScreen>(){
+    override val screenName = "Search Screen"
 
-    val searchEmptyImage = child<KNode> {
+    val searchEmptyResult = child<KNode> {
         hasText("No results")
     }
 }

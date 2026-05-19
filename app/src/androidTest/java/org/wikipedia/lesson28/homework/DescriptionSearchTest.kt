@@ -44,9 +44,12 @@ class DescriptionSearchTest: BaseTest() {
             step("Вводит запрос и проверяет в ${searchInput.getName()} ") {
                 searchInput {
                     multiAction(baseRule.testData)
+                    Thread.sleep(3000)
                     equalsWithTrim(baseRule.testData)
                 }
-                SearchComposeScreen.searchEmptyImage.assertIsDisplayed()
+                Thread.sleep(3000)
+                SearchComposeScreen.searchEmptyResult.assertIsNotDisplayed()
+
             }
         }
     }
@@ -64,9 +67,11 @@ class DescriptionSearchTest: BaseTest() {
             step("Вводит запрос и проверяет в ${searchInput.getName()} ") {
                 searchInput {
                     multiAction(baseRule.testData)
+                    Thread.sleep(3000)
                     equalsWithTrim(baseRule.testData)
                 }
-                SearchComposeScreen.searchEmptyImage.assertIsNotDisplayed()
+                Thread.sleep(3000)
+                SearchComposeScreen.searchEmptyResult.assertIsDisplayed()
             }
         }
     }
