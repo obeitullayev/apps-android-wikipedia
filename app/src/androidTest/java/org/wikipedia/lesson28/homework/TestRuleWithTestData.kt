@@ -14,7 +14,7 @@ class CustomTestRule2 : TestRule {
 
     override fun apply(
         base: Statement,
-        description: org.junit.runner.Description
+        description: Description
     ): Statement {
 
         return object : Statement() {

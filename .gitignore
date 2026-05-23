@@ -44,5 +44,5 @@ device*.png
 
 # Log Files
 *.log
-
+allure-results
 data.properties
