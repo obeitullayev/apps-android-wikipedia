@@ -19,6 +19,14 @@ static def computeVersionName(versionCode, label) {
     return "${versionCode}-${label}-${(new Date()).format('yyyy-MM-dd')}"
 }
 
+def autotestPropertiesFile = rootProject.file("data.properties")
+def autotestProperties = new Properties()
+if (autotestPropertiesFile.exists()) {
+    autotestPropertiesFile.withInputStream { stream ->
+        autotestProperties.load(stream)
+    }
+}
+
 android {
     compileSdk = 36
 
@@ -99,6 +107,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             testProguardFiles 'test-proguard-rules.pro'
+
+            autotestProperties.each { key, value ->
+                buildConfigField "String", key.toString(), "\"${value.toString()}\""
+            }
+
         }
         release {
             minifyEnabled true
@@ -164,11 +177,15 @@ ksp {
 apply from: '../gradle/src/ktlint.gradle'
 
 dependencies {
-    androidTestImplementation "com.kaspersky.android-components:kaspresso:1.6.0"
+    androidTestImplementation "com.kaspersky.android-components:kaspresso:1.6.1"
     // To keep the Maven Central dependencies up-to-date
     // use http://gradleplease.appspot.com/ or http://search.maven.org/.
     // Debug with ./gradlew -q app:dependencies --configuration compile
 
+    androidTestImplementation("com.kaspersky.android-components:kaspresso-allure-support:1.6.0")
+    androidTestImplementation("com.kaspersky.android-components:kaspresso-compose-support:1.6.1")
+    androidTestImplementation("io.github.kakaocup:compose:1.1.0")
+    implementation("androidx.drawerlayout:drawerlayout:1.2.0")
     coreLibraryDesugaring libs.desugar.jdk.libs
 
     implementation project(':analytics:testkitchen')
