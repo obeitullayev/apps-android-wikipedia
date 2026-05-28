@@ -46,3 +46,4 @@ device*.png
 *.log
 allure-results
 data.properties
+marathon

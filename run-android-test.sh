@@ -17,7 +17,6 @@ TEST_CLASS="org.wikipedia.lesson29.homework.ScriptTest#checkArticleTitle"
 GRADLE_TASK="app:connectedAlphaDebugAndroidTest"
 
 
-REPORT_PATH="app/build/reports/androidTests/connected/index.html"
 
 # =========================
 # CREATE AVD IF NOT EXISTS

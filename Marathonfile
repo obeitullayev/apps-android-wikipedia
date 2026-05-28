@@ -1,0 +1,38 @@
+name: "My awesome tests"
+outputDir: "marathon"
+debug: false
+vendorConfiguration:
+  type: "Android"
+  applicationApk: "app/build/outputs/apk/alpha/debug/app-alpha-debug.apk"
+  testApplicationApk: "app/build/outputs/apk/androidTest/alpha/debug/app-alpha-debug-androidTest.apk"
+
+#  autoGrantPermission: true
+
+  applicationPmClear: true
+  testApplicationPmClear: true
+  adbInitTimeoutMillis: 300000
+
+#  waitForDevicesTimeoutMillis: 300000
+  allureConfiguration:
+    enabled: true
+    relativeResultsDirectory: "/sdcard/Documents/allure-results"
+
+filteringConfiguration:
+  allowlist:
+    - type: "fully-qualified-test-name"
+      values:
+        - "org.wikipedia.lesson25.homework.SmartScenarioTest#closeBannerTest"
+        - "org.wikipedia.lesson22.homework.WidgetTest#testForThemeWidget"
+poolingStrategy:
+  type: "omni"
+
+shardingStrategy:
+  type: "parallel"
+
+batchingStrategy:
+  type: "isolate"
+
+#fileSyncConfiguration:
+#  pull:
+#    - "/sdcard/Download/"
+#    - "/sdcard/test_output/"
